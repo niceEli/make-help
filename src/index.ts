@@ -40,10 +40,12 @@ if (useOptions == undefined) {
 	useOptions = false;
 }
 
-if (target && !useOptions) {
-	targetFile(parsedFile, target)
-} else {
-	displayFile(parsedFile);
+if (!useOptions) {
+	if (target) {
+		targetFile(parsedFile, target)
+	} else {
+		displayFile(parsedFile);
+	}
 }
 
 if (useOptions) {
