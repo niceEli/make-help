@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { getFile } from "./getFile.js";
 import { parseYaml } from "./parseYaml.js";
 import { displayFile, targetFile } from "./displayFile.js";
+import { entryData } from "./types.js";
 
 const makeHelp = new Command();
 
@@ -21,10 +22,9 @@ if (!filePath) {
 
 const file = getFile(filePath);
 const yamlFile = parseYaml(file);
-const entries = Object.entries(yamlFile.targets);
 
 if (target) {
 	targetFile(yamlFile, target)
 } else {
-	displayFile(yamlFile, entries);
+	displayFile(yamlFile);
 }

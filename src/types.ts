@@ -15,6 +15,6 @@ export interface entryData {
 export interface HelpData { // used for the JSON schema
 	name?: string;
 	author?: string;
-	targets: Record<string, entryData>; 
+	targets?: Record<string, entryData>; 
 }
 	

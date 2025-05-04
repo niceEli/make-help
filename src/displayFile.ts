@@ -5,6 +5,10 @@ import { entryData, HelpData } from "./types.js";
 import figlet from "figlet";
 
 export function targetFile(data: HelpData, target: string) {
+	if (!data.targets) {
+		console.error(chalk.cyan(`No targets: "${target}"`));
+		process.exit(1);
+	}
 	const entry = data.targets[target];
 	if (!entry) {
 		console.error(chalk.cyan(`No such target: "${target}"`));
@@ -14,7 +18,7 @@ export function targetFile(data: HelpData, target: string) {
 	displayInfo(target, entry);
 }
 
-export function displayFile(data: HelpData, entries: [string, entryData][]) {
+export function displayFile(data: HelpData) {
 	if (data.name) {
 		let name = figlet.textSync(data.name, {
 			font: "Slant",
@@ -26,12 +30,16 @@ export function displayFile(data: HelpData, entries: [string, entryData][]) {
 	}
 	
 	if (data.author || data.name) console.log();
-	
-	console.log(chalk.bold("Available targets:\n"));
 
-	// @ts-ignore
-	for (const [target, info] of entries) {
+	if (data.targets ) {
+		const entries = Object.entries(data.targets);
+		
+		console.log(chalk.bold("Available targets:\n"));
+		
 		// @ts-ignore
-		displayInfo(target, info);
+		for (const [target, info] of entries) {
+			// @ts-ignore
+			displayInfo(target, info);
+		}
 	}
 }
