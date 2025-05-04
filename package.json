@@ -1,6 +1,6 @@
 {
 	"name": "makeman",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "An Opinionated GNU Make Help System",
 	"repository": {
 		"type": "git",
@@ -17,7 +17,8 @@
 		"LICENSE.md",
 		"README.md",
 		"lib/",
-		"package.json"
+		"package.json",
+		"help.schema.json"
 	],
 	"scripts": {
 		"build": "tsup",
