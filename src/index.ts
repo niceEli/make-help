@@ -23,19 +23,6 @@ makeHelp
 	.option("-i, --init", "Initialize a new help file")
 	.parse();
 
-let filePath = makeHelp.args[0];
-const target = makeHelp.args[1];
-
-filePath = getFilePath(filePath);
-const fileType = mime.getType(filePath);
-if (fileType == null || (fileType !== "text/yaml" && fileType !== "application/json" && fileType !== "application/toml")) {
-	console.error(`File type not recognized: ${filePath}`);
-	process.exit(1);
-}
-
-const file = getFile(filePath);
-const parsedFile = parseFile(file, fileType);
-
 const options = makeHelp.opts<opts>();
 
 if (options.init) {
@@ -51,7 +38,7 @@ if (options.init) {
 		author: author,
 		description: description,
 	}
-	
+
 	switch (type) {
 		case "YAML": {
 			const yamlFile = yaml.stringify(file);
@@ -66,9 +53,23 @@ if (options.init) {
 			fs.writeFileSync("help.toml", tomlFile);
 		}break
 	}
-	
+
 	process.exit(0);
 }
+
+let filePath = makeHelp.args[0];
+const target = makeHelp.args[1];
+
+filePath = getFilePath(filePath);
+const fileType = mime.getType(filePath);
+if (fileType == null || (fileType !== "text/yaml" && fileType !== "application/json" && fileType !== "application/toml")) {
+	console.error(`File type not recognized: ${filePath}`);
+	process.exit(1);
+}
+
+const file = getFile(filePath);
+const parsedFile = parseFile(file, fileType);
+
 if (options.toYaml) {
 	console.log(yaml.stringify(parsedFile));
 	process.exit(0);
