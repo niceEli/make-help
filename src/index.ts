@@ -2,7 +2,6 @@ import { Command } from 'commander';
 import { getFile } from "./getFile.js";
 import { parseYaml } from "./parseYaml.js";
 import { displayFile, targetFile } from "./displayFile.js";
-import { entryData } from "./types.js";
 
 const makeHelp = new Command();
 
