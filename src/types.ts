@@ -9,6 +9,7 @@ export interface entryData {
 		example?: string;
 		commands?: nameAndDesc[];
 		options?: nameAndDesc[];
+		variables?: nameAndDesc[];
 	};
 }
 

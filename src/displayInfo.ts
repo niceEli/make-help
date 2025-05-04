@@ -10,6 +10,7 @@ export function displayInfo(target: string, entry: entryData) {
 	if (entry.usage) {
 		const args: nameAndDesc[] = [];
 		const options: nameAndDesc[] = [];
+		const variables: nameAndDesc[] = [];
 		if (entry.usage.commands) {
 			for (const arg of entry.usage.commands) {
 				args.push(arg);
@@ -18,6 +19,11 @@ export function displayInfo(target: string, entry: entryData) {
 		if (entry.usage.options) {
 			for (const opt of entry.usage.options) {
 				options.push(opt);
+			}
+		}
+		if (entry.usage.variables) {
+			for (const variable of entry.usage.variables) {
+				variables.push(variable);
 			}
 		}
 		
@@ -37,6 +43,12 @@ export function displayInfo(target: string, entry: entryData) {
 			console.log(`\t\t${chalk.bold("Options:")}`);
 			for (const opt of options) {
 				console.log(`\t\t\t${chalk.cyan(opt.name)}: ${opt.description}`);
+			}
+		}
+		if (variables.length > 0) {
+			console.log(`\t\t${chalk.bold("Variables:")}`);
+			for (const variable of variables) {
+				console.log(`\t\t\t${chalk.cyan(variable.name)}: ${variable.description}`);
 			}
 		}
 	}

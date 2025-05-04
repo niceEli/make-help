@@ -1,6 +1,6 @@
 {
 	"name": "makeman",
-	"version": "1.0.3",
+	"version": "1.1.0",
 	"description": "An Opinionated GNU Make Help System",
 	"repository": {
 		"type": "git",

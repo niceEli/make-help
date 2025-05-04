@@ -18,9 +18,6 @@
           "type": "object"
         }
       },
-      "required": [
-        "targets"
-      ],
       "type": "object"
     },
     "entryData": {
@@ -42,6 +39,12 @@
               "type": "string"
             },
             "options": {
+              "items": {
+                "$ref": "#/definitions/nameAndDesc"
+              },
+              "type": "array"
+            },
+            "variables": {
               "items": {
                 "$ref": "#/definitions/nameAndDesc"
               },

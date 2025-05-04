@@ -5,6 +5,10 @@ targets:
     description: "Build the app"
   dev:
     description: "Build and run the app"
+    usage: 
+      variables:
+        - name: "NODE_ENV"
+          description: "Use 'development' for development mode, 'production' for production mode"
   format:
     description: "Format the code using prettier"
   lint:
