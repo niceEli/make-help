@@ -1,0 +1,28 @@
+{
+	"dictionaries": ["npm", "node", "typescript"],
+	"ignorePaths": [
+		".all-contributorsrc",
+		".github",
+		"CHANGELOG.md",
+		"coverage",
+		"lib",
+		"node_modules",
+		"pnpm-lock.yaml"
+	],
+	"words": [
+		"Anson",
+		"TSESTree",
+		"apexskier",
+		"attw",
+		"boop",
+		"dbaeumer",
+		"eslint-doc-generatorrc",
+		"infile",
+		"joshuakgoldberg",
+		"markdownlintignore",
+		"mshick",
+		"mtfoley",
+		"npmjs",
+		"stefanzweifel"
+	]
+}
