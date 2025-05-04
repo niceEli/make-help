@@ -17,6 +17,12 @@
                   <Item>
                     <option name="path" value="wow.yaml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="help.toml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="help.json" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
