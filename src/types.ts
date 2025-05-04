@@ -29,9 +29,9 @@ export interface styleData {
 }
 
 export interface Color {
-	r: number & { _brand: 'RGB' }
-	g: number & { _brand: 'RGB' }
-	b: number & { _brand: 'RGB' }
+	r: number
+	g: number
+	b: number
 }
 
 export interface HelpData { // used for the JSON schema
