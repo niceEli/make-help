@@ -25,6 +25,9 @@
     "HelpData": {
       "additionalProperties": false,
       "properties": {
+        "$schema": {
+          "type": "string"
+        },
         "author": {
           "type": "string"
         },

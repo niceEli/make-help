@@ -4,9 +4,11 @@ import { parseFile } from "./parseFile.js";
 import { displayFile, targetFile } from "./displayFile.js";
 import { getFilePath } from "./getFilePath.js";
 import mime from "mime";
-import { opts } from "./types.js";
+import { HelpData, opts } from "./types.js";
 import yaml from "yaml";
 import * as toml from "smol-toml";
+import { input, select } from "@inquirer/prompts";
+import fs from "fs";
 
 const makeHelp = new Command();
 
@@ -18,6 +20,7 @@ makeHelp
 	.option("-j, --toJson", "Convert to JSON")
 	.option("-y, --toYaml", "Convert to YAML")
 	.option("-t, --toToml", "Convert to TOML")
+	.option("-i, --init", "Initialize a new help file")
 	.parse();
 
 let filePath = makeHelp.args[0];
@@ -34,28 +37,53 @@ const file = getFile(filePath);
 const parsedFile = parseFile(file, fileType);
 
 const options = makeHelp.opts<opts>();
-let useOptions: boolean = options.toJson || options.toYaml || options.toToml;
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-if (useOptions == undefined) {
-	useOptions = false;
+
+if (options.init) {
+	const name = await input({ message: "Name Of The App:" })
+	const author = await input({ message: "Author:" })
+	const description = await input({ message: "Description:" })
+
+	const type = await select({ message: "Type Of Help File:", choices: ["YAML", "JSON", "TOML"] })
+
+	const file: HelpData = {
+		$schema: "https://unpkg.com/makeman@*/help.schema.json",
+		name: name,
+		author: author,
+		description: description,
+	}
+	
+	switch (type) {
+		case "YAML": {
+			const yamlFile = yaml.stringify(file);
+			fs.writeFileSync("help.yaml", yamlFile);
+		}break
+		case "JSON": {
+			const jsonFile = JSON.stringify(file, null, 2);
+			fs.writeFileSync("help.json", jsonFile);
+		}break
+		case "TOML": {
+			const tomlFile = toml.stringify(file);
+			fs.writeFileSync("help.toml", tomlFile);
+		}break
+	}
+	
+	process.exit(0);
+}
+if (options.toYaml) {
+	console.log(yaml.stringify(parsedFile));
+	process.exit(0);
+}
+if (options.toJson) {
+	console.log(JSON.stringify(parsedFile, null, 2));
+	process.exit(0);
+}
+if (options.toToml) {
+	console.log(toml.stringify(parsedFile));
+	process.exit(0);
 }
 
-if (!useOptions) {
-	if (target) {
-		targetFile(parsedFile, target)
-	} else {
-		displayFile(parsedFile);
-	}
-}
-
-if (useOptions) {
-	if (options.toYaml) {
-		console.log(yaml.stringify(parsedFile));
-	}
-	if (options.toJson) {
-		console.log(JSON.stringify(parsedFile, null, 2));
-	}
-	if (options.toToml) {
-		console.log(toml.stringify(parsedFile));
-	}
+if (target) {
+	targetFile(parsedFile, target)
+} else {
+	displayFile(parsedFile);
 }

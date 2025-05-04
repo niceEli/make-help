@@ -1,3 +1,4 @@
+$schema: "https://unpkg.com/makeman@*/help.schema.json"
 name: makeman
 author: niceEli
 description: An Opinionated GNU Make Help System

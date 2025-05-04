@@ -4,6 +4,7 @@ export interface opts {
 	toYaml: boolean;
 	toJson: boolean;
 	toToml: boolean;
+	init: boolean;
 }
 
 export interface nameAndDesc {
@@ -34,6 +35,7 @@ export interface Color {
 }
 
 export interface HelpData { // used for the JSON schema
+	$schema?: string,
 	name?: string;
 	author?: string;
 	description?: string;
