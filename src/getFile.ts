@@ -7,7 +7,7 @@ export function getFile(filePath: string) {
 		file = fs.readFileSync(filePath, 'utf8');
 	} catch (e) {
 		console.error(chalk.red(`Error reading file: ${filePath}`));
-		console.error(e ?? "Error reading file");
+		console.log((e as Error).message)
 		process.exit(1);
 	}
 	
