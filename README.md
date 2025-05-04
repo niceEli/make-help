@@ -1,6 +1,8 @@
-# Make Help
+# MakeMan
 
-A GNU Make Help System
+An Opinionated GNU Make Help System
+
+It's man(1) But For Make Projects
 
 ## Usage
 
