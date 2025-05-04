@@ -1,7 +1,7 @@
 ﻿/* eslint-disable */
 import chalk from "chalk";
 import { displayInfo } from "./displayInfo.js";
-import { entryData, HelpData } from "./types.js";
+import { HelpData } from "./types.js";
 import figlet from "figlet";
 
 export function targetFile(data: HelpData, target: string) {

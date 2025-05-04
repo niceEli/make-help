@@ -1,0 +1,45 @@
+name = "makeman"
+author = "niceEli"
+
+[targets.build]
+description = "Build the app"
+
+[targets.dev]
+description = "Build and run the app"
+
+[[targets.dev.usage.variables]]
+name = "NODE_ENV"
+description = "Use 'development' for development mode, 'production' for production mode"
+
+[targets.format]
+description = "Format the code using prettier"
+
+[targets.lint]
+description = "Lint the code using ESLint"
+
+[targets.test]
+description = "Run the tests using vitest"
+
+[targets.test.usage]
+example = "test [commands] [options]"
+
+[[targets.test.usage.commands]]
+name = "dev"
+description = "Run the tests in development mode"
+
+[[targets.test.usage.options]]
+name = "--watch"
+description = "Run the tests in watch mode"
+
+[targets.tsc]
+description = "Type check the code using TypeScript"
+
+[targets.tsc.usage]
+example = "tsc [commands]"
+
+[[targets.tsc.usage.commands]]
+name = "noEmit"
+description = "Type check the code without emitting files"
+
+[targets.genSchema]
+description = "Generate the schema for the app"

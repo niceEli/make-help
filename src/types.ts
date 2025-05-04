@@ -1,4 +1,10 @@
-﻿export interface nameAndDesc {
+﻿export interface opts {
+	toYaml: boolean;
+	toJson: boolean;
+	toToml: boolean;
+}
+
+export interface nameAndDesc {
 	name: string;
 	description: string;
 }
