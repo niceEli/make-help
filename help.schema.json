@@ -1,0 +1,74 @@
+{
+  "$ref": "#/definitions/HelpData",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "HelpData": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "targets": {
+          "additionalProperties": {
+            "$ref": "#/definitions/entryData"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "targets"
+      ],
+      "type": "object"
+    },
+    "entryData": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "usage": {
+          "additionalProperties": false,
+          "properties": {
+            "commands": {
+              "items": {
+                "$ref": "#/definitions/nameAndDesc"
+              },
+              "type": "array"
+            },
+            "example": {
+              "type": "string"
+            },
+            "options": {
+              "items": {
+                "$ref": "#/definitions/nameAndDesc"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "nameAndDesc": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ],
+      "type": "object"
+    }
+  }
+}
+

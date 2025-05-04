@@ -1,0 +1,30 @@
+﻿name: makeman
+author: niceEli
+targets:
+  build:
+    description: "Build the app"
+  dev:
+    description: "Build and run the app"
+  format:
+    description: "Format the code using prettier"
+  lint:
+    description: "Lint the code using ESLint"
+  test:
+    description: "Run the tests using vitest"
+    usage:
+      example: "test [commands] [options]"
+      commands:
+        - name: "dev"
+          description: "Run the tests in development mode"
+      options:
+        - name: "--watch"
+          description: "Run the tests in watch mode"
+  tsc:
+    description: "Type check the code using TypeScript"
+    usage:
+      example: "tsc [commands]"
+      commands:
+        - name: "noEmit"
+          description: "Type check the code without emitting files"
+  genSchema: 
+    description: "Generate the schema for the app"

@@ -1,0 +1,63 @@
+{
+	"name": "makeman",
+	"version": "1.0.0",
+	"description": "An Opinionated GNU Make Help System",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/niceEli/make-help.git"
+	},
+	"license": "MIT",
+	"author": "niceEli",
+	"type": "module",
+	"main": "lib/index.js",
+	"bin": {
+		"makeman": "lib/index.js"
+	},
+	"files": [
+		"LICENSE.md",
+		"README.md",
+		"lib/",
+		"package.json"
+	],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup && node .",
+		"format": "prettier .",
+		"lint": "eslint . --max-warnings 0",
+		"test": "vitest",
+		"tsc": "tsc",
+		"genSchema": "npx ts-json-schema-generator --path 'src/types.ts' --type HelpData > help.schema.json"
+	},
+	"lint-staged": {
+		"*": "prettier --ignore-unknown --write"
+	},
+	"devDependencies": {
+		"@eslint/js": "9.22.0",
+		"@release-it/conventional-changelog": "10.0.0",
+		"@types/figlet": "^1.7.0",
+		"@types/node": "22.13.10",
+		"@vitest/coverage-v8": "3.0.9",
+		"@vitest/eslint-plugin": "1.1.38",
+		"console-fail-test": "0.5.0",
+		"eslint": "9.22.0",
+		"husky": "9.1.7",
+		"lint-staged": "15.5.0",
+		"prettier": "3.5.3",
+		"release-it": "18.1.2",
+		"ts-json-schema-generator": "^2.4.0",
+		"tsup": "8.4.0",
+		"typescript": "5.8.2",
+		"typescript-eslint": "8.26.1",
+		"vitest": "3.0.9"
+	},
+	"packageManager": "pnpm@10.4.0",
+	"engines": {
+		"node": ">=18.3.0"
+	},
+	"dependencies": {
+		"chalk": "^5.4.1",
+		"commander": "^13.1.0",
+		"figlet": "^1.8.1",
+		"yaml": "^2.7.1"
+	}
+}
