@@ -1,12 +1,15 @@
 name = "makeman"
 author = "niceEli"
+description = "An Opinionated GNU Make Help System"
 
+[targets]
 [targets.build]
 description = "Build the app"
 
 [targets.dev]
 description = "Build and run the app"
 
+[targets.dev.usage]
 [[targets.dev.usage.variables]]
 name = "NODE_ENV"
 description = "Use 'development' for development mode, 'production' for production mode"

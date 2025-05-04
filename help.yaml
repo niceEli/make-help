@@ -1,34 +1,36 @@
-﻿name: makeman
+name: makeman
 author: niceEli
+description: An Opinionated GNU Make Help System
 targets:
   build:
-    description: "Build the app"
+    description: Build the app
   dev:
-    description: "Build and run the app"
-    usage: 
+    description: Build and run the app
+    usage:
       variables:
-        - name: "NODE_ENV"
-          description: "Use 'development' for development mode, 'production' for production mode"
+        - name: NODE_ENV
+          description: Use 'development' for development mode, 'production' for production
+            mode
   format:
-    description: "Format the code using prettier"
+    description: Format the code using prettier
   lint:
-    description: "Lint the code using ESLint"
+    description: Lint the code using ESLint
   test:
-    description: "Run the tests using vitest"
+    description: Run the tests using vitest
     usage:
-      example: "test [commands] [options]"
+      example: test [commands] [options]
       commands:
-        - name: "dev"
-          description: "Run the tests in development mode"
+        - name: dev
+          description: Run the tests in development mode
       options:
-        - name: "--watch"
-          description: "Run the tests in watch mode"
+        - name: --watch
+          description: Run the tests in watch mode
   tsc:
-    description: "Type check the code using TypeScript"
+    description: Type check the code using TypeScript
     usage:
-      example: "tsc [commands]"
+      example: tsc [commands]
       commands:
-        - name: "noEmit"
-          description: "Type check the code without emitting files"
-  genSchema: 
-    description: "Generate the schema for the app"
+        - name: noEmit
+          description: Type check the code without emitting files
+  genSchema:
+    description: Generate the schema for the app

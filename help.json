@@ -1,6 +1,7 @@
 {
   "name": "makeman",
   "author": "niceEli",
+  "description": "An Opinionated GNU Make Help System",
   "targets": {
     "build": {
       "description": "Build the app"

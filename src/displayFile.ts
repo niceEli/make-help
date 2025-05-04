@@ -21,8 +21,18 @@ export function targetFile(data: HelpData, target: string) {
 export function displayFile(data: HelpData) {
 	if (data.name) {
 		let name = figlet.textSync(data.name, {
-			font: "Slant",
-		}).trimEnd()
+			font: data.styles?.titleFont ?? "Slant",
+		})
+		
+		if (data.styles?.titleColor) {
+			const tc = data.styles?.titleColor
+			name = chalk.rgb(tc.r, tc.g, tc.b)(name)
+		}
+		if (data.styles?.titleBackground) {
+			const tbc = data.styles?.titleBackground
+			name = chalk.bgRgb(tbc.r, tbc.g, tbc.b)(name)
+		}
+		
 		console.log(name)
 	}
 	if (data.author) {
@@ -31,6 +41,11 @@ export function displayFile(data: HelpData) {
 	
 	if (data.author || data.name) console.log();
 
+	if (data.description) {
+		console.log(data.description);
+		console.log()
+	}
+	
 	if (data.targets ) {
 		const entries = Object.entries(data.targets);
 		
